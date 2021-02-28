@@ -62,7 +62,7 @@ if (registerEmail) {
 
 if (loginBtn) {
     loginBtn.addEventListener('click', () => {
-        if (loginEmail.value == '' || loginPassword.value == '') {
+        if (loginEmail.value == 'hitlon22@onet.pl' && loginPassword.value == 'zaq1@WSX') {
             location.href = 'dashboard.html';
             loginError.style.display = 'none';
         } else {

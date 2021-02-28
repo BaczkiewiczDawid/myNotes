@@ -39,7 +39,7 @@
       -ms-flex-align: center;
           align-items: center;
   padding: .85rem 1.3rem;
-  width: 15rem;
+  width: 100%;
   height: auto;
   background-color: #2663FF;
 }
@@ -63,7 +63,7 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  width: 15rem;
+  width: 90%;
   height: auto;
   padding: 1rem 1.3rem;
 }
@@ -91,7 +91,7 @@
   bottom: 5vh;
   padding: 1rem 2rem;
   font-weight: 700;
-  border: none;
+  border: 2px solid #fafafa;
   border-radius: 100px;
   z-index: 2;
   cursor: pointer;
@@ -211,6 +211,12 @@
   cursor: pointer;
 }
 
+@media (min-width: 645px) {
+  .dashboard .dashboard__notes .dashboard__note {
+    width: 45%;
+  }
+}
+
 @media (min-width: 935px) {
   .dashboard {
     display: -webkit-box;
@@ -227,6 +233,9 @@
     display: flex;
     width: 65%;
     margin: 2rem;
+  }
+  .dashboard .dashboard__notes .dashboard__note {
+    width: 43%;
   }
   .dashboard .dashboard__new-note {
     display: -webkit-box;
@@ -256,6 +265,39 @@
   }
   .dashboard .dashboard__new {
     display: none;
+  }
+}
+
+@media (min-width: 1440px) {
+  .dashboard .dashboard__notes .dashboard__note {
+    width: 29%;
+  }
+  .dashboard .dashboard__notes .dashboard__note .dashboard__content .dashboard__paragraph {
+    font-size: 1.2rem;
+    line-height: 1.8rem;
+  }
+  .dashboard .dashboard__notes .dashboard__note .dashboard__content .dashboard__link {
+    font-size: 1.3rem;
+    margin-top: 2rem;
+  }
+  .dashboard .dashboard__new-note .dashboard__nav .dashboard__welcome {
+    font-size: 1.2rem;
+  }
+  .dashboard .dashboard__new-note .dashboard__nav .dashboard__logout {
+    font-size: 1.2rem;
+  }
+  .dashboard .dashboard__new-note .dashboard__title {
+    margin-top: 6rem;
+    font-size: 2.1rem;
+  }
+  .dashboard .dashboard__new-note .dashboard__label .dashboard__input {
+    width: 16rem;
+    font-size: 1rem;
+  }
+  .dashboard .dashboard__new-note .dashboard__label .dashboard__button {
+    font-size: 1.25rem;
+    padding: .7rem 1.3rem;
+    margin-top: 3rem;
   }
 }
 /*# sourceMappingURL=dashboard.css.map */
