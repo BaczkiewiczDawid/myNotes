@@ -11,6 +11,7 @@
 
         .dashboard__note {
             margin: 1rem;
+            width: 90vw;
 
             .dashboard__title-box {
                 display: flex;
@@ -28,9 +29,11 @@
                     font-weight: 700;
                 }
 
-                .dashboard__edit {
+                .dashboard__delete {
                     color: $background;
                     cursor: pointer;
+                    width: 10px;
+                    height: auto;
                 }
             }
 

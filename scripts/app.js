@@ -81,6 +81,7 @@ const titleInput = document.querySelector('.dashboard .dashboard__new-note .dash
 const descriptionInput = document.querySelector('.dashboard .dashboard__new-note .dashboard__label #description');
 const linkInput = document.querySelector('.dashboard .dashboard__new-note .dashboard__label #link');
 const addNoteBtn = document.querySelector('.dashboard .dashboard__new-note .dashboard__label .dashboard__button');
+let deleteBtn = document.querySelectorAll('.dashboard .dashboard__notes .dashboard__note .dashboard__title-box .dashboard__delete');
 
 let isNewNoteOpened = false;
 
@@ -109,7 +110,7 @@ addNoteBtn.addEventListener('click', () => {
         const dashboardNote = document.createElement('div');
         const dashboardTitleBox = document.createElement('div');
         const dashboardTitle = document.createElement('h1');
-        const dashboardEdit = document.createElement('p');
+        const dashboardDelete = document.createElement('img');
         const dashboardContent = document.createElement('div');
         const dashboardParagraph = document.createElement('p');
 
@@ -117,17 +118,17 @@ addNoteBtn.addEventListener('click', () => {
         dashboardNote.appendChild(dashboardTitleBox);
         dashboardNote.appendChild(dashboardContent);
         dashboardTitleBox.appendChild(dashboardTitle);
-        dashboardTitleBox.appendChild(dashboardEdit);
+        dashboardTitleBox.appendChild(dashboardDelete);
         dashboardContent.appendChild(dashboardParagraph);
 
         dashboardNote.classList.add('dashboard__note');
         dashboardTitleBox.classList.add('dashboard__title-box');
         dashboardTitle.classList.add('dashboard__title');
-        dashboardEdit.classList.add('dashboard__edit');
+        dashboardDelete.classList.add('dashboard__delete');
         dashboardContent.classList.add('dashboard__content');
         dashboardParagraph.classList.add('dashboard__paragraph');
 
-        dashboardEdit.textContent = 'E';
+        dashboardDelete.src = 'img/delete.png';
         dashboardTitle.textContent = titleInput.value;
         dashboardParagraph.textContent = descriptionInput.value;
 
@@ -141,6 +142,8 @@ addNoteBtn.addEventListener('click', () => {
             dashboardContent.appendChild(dashboardLink);
             dashboardLink.classList.add('dashboard__link');
         }
+
+        deleteBtn = document.querySelectorAll('.dashboard .dashboard__notes .dashboard__note .dashboard__title-box .dashboard__delete');
     }
 })
 
@@ -160,3 +163,11 @@ window.addEventListener('resize', () => {
         newNoteBtn.style.display = 'none';
     }
 })
+
+setInterval(() => {
+    deleteBtn.forEach(del => {
+        del.addEventListener('click', (e) => {
+            e.target.parentNode.parentNode.remove();
+        })
+    })
+}, 1000);
