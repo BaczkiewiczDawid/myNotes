@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyNotes - Login</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <main class="main">
+        <h1 class="main__title">Login to My<span class="main__title-logo">Notes</span></h1>
+        <form action="/register" method="POST" class="main__form">
+            <input type="text" name="email" placeholder="Email" class="main__input input" id="login-email" required>
+            <input type="password" name="password" placeholder="Password" class="main__input input" id="login-password" required>
+            <p class="main__error" id="login-error">E-Mail or Password are incorrect</p>
+            <button type="button" name="login" placeholder="Login" class="main__submit login-btn btn">Login</button>
+        </form>
+        <div class="main__create">
+            <span class="main__register">Dont have an account?</span>
+            <a href="register.html" class="main__register main__register-create">Register now!</a>
+        </div>
+    </main>
+    <script src="scripts/app.js"></script>
+</body>
+</html>

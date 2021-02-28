@@ -1,0 +1,14 @@
+@import './_variables';
+@import './dashboard.scss';
+@import './login.scss';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    background-color: $background;
+    font-family: 'Roboto', sans-serif;
+}

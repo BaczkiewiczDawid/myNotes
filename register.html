@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyNotes - Login</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <main class="main">
+        <h1 class="main__title">Register to My<span class="main__title-logo">Notes</span></h1>
+        <form action="register.html" method="POST" class="main__form" autocomplete="off">
+            <input type="text" name="email" placeholder="Email" autocomplete="off" class="main__input input" id="register-email">
+            <input type="text" name="name" placeholder="Name" autocomplete="off" class="main__input input" id="register-name">
+            <input type="password" name="password" placeholder="Password" autocomplete="off" class="main__input input" id="register-password">
+            <p class="main__error main__error-email">* Email must be in following rule: example@example.com</p>
+            <p class="main__error main__error-name">* Name must be longer than 6 characters</p>
+            <p class="main__error main__error-password">* Password should include Capital letter, small letter and number, should be longer than 6</p>
+            <button type="button" name="register" placeholder="Register" class="main__submit btn" id="register-button">Register</button>
+        <div class="main__create">
+            <span class="main__register">Already have an account?</span>
+            <a href="index.html" class="main__register main__register-create">Login now!</a>
+        </div>
+    </main>
+    <script src="scripts/app.js"></script>
+</body>
+</html>
