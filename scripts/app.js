@@ -105,56 +105,58 @@ newNoteBtn.addEventListener('click', () => {
 
 
 addNoteBtn.addEventListener('click', () => {
-    const dashboardNote = document.createElement('div');
-    const dashboardTitleBox = document.createElement('div');
-    const dashboardTitle = document.createElement('h1');
-    const dashboardEdit = document.createElement('p');
-    const dashboardContent = document.createElement('div');
-    const dashboardParagraph = document.createElement('p');
-    const dashboardLink = document.createElement('a');
+    if (titleInput.value != '' && descriptionInput.value != '') {
+        const dashboardNote = document.createElement('div');
+        const dashboardTitleBox = document.createElement('div');
+        const dashboardTitle = document.createElement('h1');
+        const dashboardEdit = document.createElement('p');
+        const dashboardContent = document.createElement('div');
+        const dashboardParagraph = document.createElement('p');
 
-    dashboard.appendChild(dashboardNote);
-    dashboardNote.appendChild(dashboardTitleBox);
-    dashboardNote.appendChild(dashboardContent);
-    dashboardTitleBox.appendChild(dashboardTitle);
-    dashboardTitleBox.appendChild(dashboardEdit);
-    dashboardContent.appendChild(dashboardParagraph);
-    dashboardContent.appendChild(dashboardLink);
+        dashboard.appendChild(dashboardNote);
+        dashboardNote.appendChild(dashboardTitleBox);
+        dashboardNote.appendChild(dashboardContent);
+        dashboardTitleBox.appendChild(dashboardTitle);
+        dashboardTitleBox.appendChild(dashboardEdit);
+        dashboardContent.appendChild(dashboardParagraph);
 
-    dashboardNote.classList.add('dashboard__note');
-    dashboardTitleBox.classList.add('dashboard__title-box');
-    dashboardTitle.classList.add('dashboard__title');
-    dashboardEdit.classList.add('dashboard__edit');
-    dashboardContent.classList.add('dashboard__content');
-    dashboardParagraph.classList.add('dashboard__paragraph');
-    dashboardLink.classList.add('dashboard__link');
+        dashboardNote.classList.add('dashboard__note');
+        dashboardTitleBox.classList.add('dashboard__title-box');
+        dashboardTitle.classList.add('dashboard__title');
+        dashboardEdit.classList.add('dashboard__edit');
+        dashboardContent.classList.add('dashboard__content');
+        dashboardParagraph.classList.add('dashboard__paragraph');
 
-    dashboardEdit.textContent = 'E';
-    dashboardTitle.textContent = titleInput.value;
-    dashboardParagraph.textContent = descriptionInput.value;
-    dashboardLink.textContent = 'Link';
-    dashboard.href = linkInput.value;
+        dashboardEdit.textContent = 'E';
+        dashboardTitle.textContent = titleInput.value;
+        dashboardParagraph.textContent = descriptionInput.value;
 
-    titleInput.value = '';
-    descriptionInput.value = '';
-    linkInput.value = '';
+        titleInput.value = '';
+        descriptionInput.value = '';
 
+        if (linkInput.value != '') {
+            const dashboardLink = document.createElement('a');
+            linkInput.value = '';
+            dashboardLink.textContent = 'Link';
+            dashboardContent.appendChild(dashboardLink);
+            dashboardLink.classList.add('dashboard__link');
+        }
+    }
+})
+
+window.addEventListener('resize', () => {
     if (window.width < 1024) {
         dashboard.style.display = 'flex';
         addingNote.style.display = 'none';
         isNewNoteOpened = false;
         newNoteBtn.classList.add('open');
         newNoteBtn.classList.remove('close');
-    } else {
-        console.log('a')
+        newNoteBtn.style.display = 'flex';
+    }
+
+    if (window.width >= 1024) {
+        dashboard.style.display = 'flex';
+        addingNote.style.display = 'flex';
+        newNoteBtn.style.display = 'none';
     }
 })
-
-if (window.width < 1024) {
-    dashboard.style.display = 'flex';
-    addingNote.style.display = 'none';
-    isNewNoteOpened = false;
-    newNoteBtn.classList.add('open');
-    newNoteBtn.classList.remove('close');
-}
-

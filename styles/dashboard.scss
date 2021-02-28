@@ -18,7 +18,7 @@
                 justify-content: space-between;
                 align-items: center;
                 padding: .85rem 1.3rem;
-                width: 14rem;
+                width: 15rem;
                 height: auto;
                 background-color: $secondary-color;
 
@@ -102,6 +102,11 @@
 
             .dashboard__welcome {
                 flex-direction: row;
+                font-weight: 700;
+
+                .dashboard__username {
+                    font-weight: 300;
+                }
             }
 
             .dashboard__logout {
@@ -158,29 +163,47 @@
 }
     
 
-@media (min-width: 1024px) {
+@media (min-width: 935px) {
     .dashboard {
         display: flex;
         flex-direction: row;
 
         .dashboard__notes {
+            display: flex;
             width: 65%;
+            margin: 2rem;
         }
 
         .dashboard__new-note {
             display: flex;
-            position: absolute;
+            position: sticky;
             right: 0;
+            top: 0;
+            bottom: 0;
+            height: 100vh;
             left: 65%;
             width: 35%;
 
+            .dashboard__title {
+                margin-left: 2rem;
+            }
+
+            .dashboard__nav {
+                padding: 1.3rem 2rem;
+            }
+
             .dashboard__label {
                 margin-top: 4rem;
+                margin-left: 2rem;
 
                 .dashboard__button {
                     padding: 8px 16px;
                 }
             }
+        }
+
+        .dashboard__new {
+            display: none;
         }
     }
 }
