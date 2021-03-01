@@ -152,9 +152,17 @@
   font-weight: 300;
 }
 
-.dashboard .dashboard__new-note .dashboard__nav .dashboard__logout {
+.dashboard .dashboard__new-note .dashboard__nav .dashboard__settings-container .dashboard__logout {
   text-decoration: none;
   color: #fafafa;
+}
+
+.dashboard .dashboard__new-note .dashboard__nav .dashboard__settings-container .dashboard__settings {
+  margin-right: 1rem;
+  background-color: transparent;
+  border: none;
+  color: #fafafa;
+  cursor: pointer;
 }
 
 .dashboard .dashboard__new-note .dashboard__title {
@@ -214,6 +222,79 @@
   cursor: pointer;
 }
 
+.dashboard .dashboard__settings-panel {
+  display: none;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: #2663FF;
+  color: #fafafa;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  z-index: 3;
+}
+
+.dashboard .dashboard__settings-panel .dashboard__settings-title {
+  margin-left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  margin-top: 2rem;
+}
+
+.dashboard .dashboard__settings-panel .dashboard__dark-mode {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-left: 1rem;
+  margin-top: 4rem;
+}
+
+.dashboard .dashboard__settings-panel .dashboard__dark-mode .dashboard__checkbox {
+  margin-left: 1rem;
+}
+
+.dashboard .dashboard__settings-panel .dashboard__language {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin-top: 1.5rem;
+  margin-left: 1rem;
+}
+
+.dashboard .dashboard__settings-panel .dashboard__language .dashboard__language-select {
+  margin-left: 1rem;
+}
+
+.dashboard .dashboard__settings-panel .dashboard__close-settings {
+  position: fixed;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  bottom: 5vh;
+  padding: 1rem 2rem;
+  font-weight: 700;
+  border: 2px solid #fafafa;
+  border-radius: 100px;
+  z-index: 2;
+  cursor: pointer;
+}
+
 @media (min-width: 645px) {
   .dashboard .dashboard__notes .dashboard__note {
     width: 45%;
@@ -244,14 +325,13 @@
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    position: -webkit-sticky;
-    position: sticky;
+    position: fixed;
     right: 0;
     top: 0;
     bottom: 0;
     height: 100vh;
-    left: 65%;
-    width: 35%;
+    left: 68%;
+    width: 32%;
   }
   .dashboard .dashboard__new-note .dashboard__title {
     margin-left: 2rem;
@@ -268,6 +348,23 @@
   }
   .dashboard .dashboard__new {
     display: none;
+  }
+  .dashboard .dashboard__settings-panel {
+    display: none;
+    position: fixed;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    height: 100vh;
+    left: 68%;
+    width: 32%;
+  }
+  .dashboard .dashboard__settings-panel .dashboard__close-settings {
+    background-color: #fafafa;
+    color: #2663FF;
+    position: fixed;
+    position: absolute;
+    bottom: 2rem;
   }
 }
 
@@ -345,6 +442,7 @@
 }
 
 .main .main__form .input {
+  background-color: transparent;
   border: none;
   border-bottom: 1px solid #2a2a2a;
   padding: 3px 2px;
@@ -364,7 +462,7 @@
 }
 
 .main .main__form .btn {
-  padding: 12px 26px;
+  padding: .8rem 1.8rem;
   background-color: #2663FF;
   border: none;
   color: #fafafa;
@@ -381,7 +479,7 @@
   color: red;
   font-size: 12px;
   margin-top: 1rem;
-  width: 220px;
+  width: 13.5rem;
 }
 
 .main .main__create {
@@ -412,7 +510,7 @@
     font-size: 2.5rem;
   }
   .main .main__form .input {
-    width: 250px;
+    width: 15.5rem;
     font-size: 1rem;
   }
   .main .main__form .btn {
@@ -421,7 +519,7 @@
   }
   .main .main__form .main__error {
     font-size: 1rem;
-    width: 250px;
+    width: 15.5rem;
   }
   .main .main__create {
     font-size: 1.1rem;

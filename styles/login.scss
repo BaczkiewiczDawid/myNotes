@@ -25,6 +25,7 @@
         margin-top: 2rem;
 
         .input {
+            background-color: transparent;
             border: none;
             border-bottom: 1px solid $primary-color;
             padding: 3px 2px;
@@ -106,4 +107,5 @@
         .main__create {
             font-size: 1.1rem;
     }
+}
 }

@@ -12,9 +12,6 @@ const loginError = document.querySelector('.main .main__form #login-error');
 
 const emailReg = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 const passwordReg = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/;
-
-const userList = [];
-
 class User {
     constructor(name, email, password) {
         this.name = name;
@@ -60,17 +57,36 @@ if (registerEmail) {
     })
 }
 
+let userList = [
+    {
+        username: "dawid",
+        email: "baczkiewicz.dawid22@gmail.com",
+        password: "zaq1@WSX"
+    },
+    {
+        username: "karol",
+        email: "karol22@gmail.com",
+        password: "Q1!wertyuiop"
+    },
+    {
+        username: "jacek",
+        email: "jacek.kam@gmail.com",
+        password: "zaq1@WSX"
+    }
+];
+
 if (loginBtn) {
     loginBtn.addEventListener('click', () => {
-        if (loginEmail.value == 'hitlon22@onet.pl' && loginPassword.value == 'zaq1@WSX') {
-            location.href = 'dashboard.html';
-            loginError.style.display = 'none';
-        } else {
-             loginError.style.display = 'flex';
-        }
-     })
-}
+        for (let i = 0; i < userList.length; i++) {
+            if (loginEmail.value == userList[i].email && loginPassword.value == userList[i].password) {
+                location.href = 'dashboard.html';
+                loginError.style.display = 'none';
+            }
 
+            loginError.style.display = 'flex';
+        }
+    })
+}
 
 //DASHBOARD
 
@@ -82,6 +98,7 @@ const descriptionInput = document.querySelector('.dashboard .dashboard__new-note
 const linkInput = document.querySelector('.dashboard .dashboard__new-note .dashboard__label #link');
 const addNoteBtn = document.querySelector('.dashboard .dashboard__new-note .dashboard__label .dashboard__button');
 let deleteBtn = document.querySelectorAll('.dashboard .dashboard__notes .dashboard__note .dashboard__title-box .dashboard__delete');
+const dashboardNewNote = document.querySelector('.dashboard .dashboard__new-note');
 
 let isNewNoteOpened = false;
 
@@ -171,3 +188,19 @@ setInterval(() => {
         })
     })
 }, 1000);
+
+//SETTINGS
+
+const openSettings = document.querySelector('.dashboard .dashboard__new-note .dashboard__nav .dashboard__settings-container .dashboard__settings');
+const settingsPanel = document.querySelector('.dashboard .dashboard__settings-panel');
+const closeSettings = document.querySelector('.dashboard .dashboard__settings-panel .dashboard__close-settings');
+
+openSettings.addEventListener('click', () => {
+    settingsPanel.style.display = 'flex';
+    dashboardNewNote.style.display = 'none';
+});
+
+closeSettings.addEventListener('click', () => {
+    settingsPanel.style.display = 'none';
+    dashboardNewNote.style.display = 'flex';
+});

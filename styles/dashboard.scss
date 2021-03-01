@@ -112,9 +112,19 @@
                 }
             }
 
-            .dashboard__logout {
-                text-decoration: none;
-                color: $background;
+            .dashboard__settings-container {
+                .dashboard__logout {
+                    text-decoration: none;
+                    color: $background;
+                }
+
+                .dashboard__settings {
+                    margin-right: 1rem;
+                    background-color: transparent;
+                    border: none;
+                    color: $background;
+                    cursor: pointer;
+                }
             }
         }
 
@@ -163,6 +173,60 @@
             }
         }
     }
+
+    .dashboard__settings-panel {
+        display: none;
+        align-items: flex-start;
+        flex-direction: column;
+        background-color: $secondary-color;
+        color: $background;
+        position: fixed;
+        height: 100%;
+        width: 100%;
+        z-index: 3;
+
+        .dashboard__settings-title {
+            margin-left: 50%;
+            transform: translateX(-50%);
+            margin-top: 2rem
+        }
+
+        .dashboard__dark-mode {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin-left: 1rem;
+            margin-top: 4rem;
+
+            .dashboard__checkbox {
+                margin-left: 1rem;
+            }
+        }
+
+        .dashboard__language {
+            display: flex;
+            flex-direction: row;
+            margin-top: 1.5rem;
+            margin-left: 1rem;
+
+            .dashboard__language-select {
+                margin-left: 1rem;
+            }
+        }
+
+        .dashboard__close-settings {
+            position: fixed;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 5vh;
+            padding: 1rem 2rem;
+            font-weight: 700;
+            border: 2px solid $background;
+            border-radius: 100px;
+            z-index: 2;
+            cursor: pointer;
+        }
+    }
 }
 
 @media (min-width: 645px) {
@@ -193,13 +257,13 @@
 
         .dashboard__new-note {
             display: flex;
-            position: sticky;
+            position: fixed;
             right: 0;
             top: 0;
             bottom: 0;
             height: 100vh;
-            left: 65%;
-            width: 35%;
+            left: 68%;
+            width: 32%;
 
             .dashboard__title {
                 margin-left: 2rem;
@@ -221,6 +285,25 @@
 
         .dashboard__new {
             display: none;
+        }
+
+        .dashboard__settings-panel {
+            display: none;
+            position: fixed;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            height: 100vh;
+            left: 68%;
+            width: 32%;
+
+            .dashboard__close-settings {
+                background-color: $background;
+                color: $secondary-color;
+                position: fixed;
+                position: absolute;
+                bottom: 2rem;
+            }
         }
     }
 }
