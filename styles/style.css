@@ -154,7 +154,9 @@
 
 .dashboard .dashboard__new-note .dashboard__nav .dashboard__settings-container .dashboard__logout {
   text-decoration: none;
+  background-color: transparent;
   color: #fafafa;
+  border: none;
 }
 
 .dashboard .dashboard__new-note .dashboard__nav .dashboard__settings-container .dashboard__settings {

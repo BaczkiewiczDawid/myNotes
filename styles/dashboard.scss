@@ -115,7 +115,9 @@
             .dashboard__settings-container {
                 .dashboard__logout {
                     text-decoration: none;
+                    background-color: transparent;
                     color: $background;
+                    border: none;
                 }
 
                 .dashboard__settings {

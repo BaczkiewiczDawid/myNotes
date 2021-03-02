@@ -88,6 +88,12 @@ if (loginBtn) {
     })
 }
 
+const logoutBtn = document.querySelector('.dashboard .dashboard__new-note .dashboard__settings-container .dashboard__logout');
+
+logoutBtn.addEventListener('click', () => {
+    location.href = 'index.html';
+});
+
 //DASHBOARD
 
 const newNoteBtn = document.querySelector('.dashboard .dashboard__new');
@@ -99,6 +105,7 @@ const linkInput = document.querySelector('.dashboard .dashboard__new-note .dashb
 const addNoteBtn = document.querySelector('.dashboard .dashboard__new-note .dashboard__label .dashboard__button');
 let deleteBtn = document.querySelectorAll('.dashboard .dashboard__notes .dashboard__note .dashboard__title-box .dashboard__delete');
 const dashboardNewNote = document.querySelector('.dashboard .dashboard__new-note');
+const dashboardParagraphList = document.querySelectorAll('.dashboard .dashboard__notes .dashboard__content .dashboard__paragraph');
 
 let isNewNoteOpened = false;
 
@@ -217,7 +224,6 @@ const titleInputPlaceholder = document.getElementsByName('Title');
 
 selectedLanguage.addEventListener('change', (e) => {
     if (e.target.value == 'english') {
-        console.log('Selected language ' + e.target.value);
         settingsTitle.textContent = 'Settings';
         darkModeTitle.textContent = 'Dark mode';
         languageTitle.textContent = 'Language';
@@ -231,7 +237,6 @@ selectedLanguage.addEventListener('change', (e) => {
     }
 
     if (e.target.value == 'polish') {
-        console.log('Selected language ' + e.target.value);
         settingsTitle.textContent = 'Ustawienia';
         darkModeTitle.textContent = 'Tryb ciemny';
         languageTitle.textContent = 'Język';
@@ -243,3 +248,19 @@ selectedLanguage.addEventListener('change', (e) => {
         addNoteBtn.textContent = 'Dodaj notatke';
     }
 })
+
+const darkmodeCheckbox = document.querySelector('.dashboard .dashboard__settings-panel .dashboard__dark-mode .dashboard__checkbox');
+
+darkmodeCheckbox.addEventListener('click', () => {
+    if (darkmodeCheckbox.checked) {
+        document.body.style.backgroundColor = '#2a2a2a';
+        dashboardParagraphList.forEach(dashboardParagraph => {
+        dashboardParagraph.style.color = '#fafafa';
+        });
+    } else {
+        document.body.style.backgroundColor = '#fafafa';
+        dashboardParagraphList.forEach(dashboardParagraph => {
+            dashboardParagraph.style.color = '#2a2a2a';
+        });
+    };
+});
