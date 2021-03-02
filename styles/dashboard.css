@@ -157,6 +157,7 @@
   background-color: transparent;
   color: #fafafa;
   border: none;
+  cursor: pointer;
 }
 
 .dashboard .dashboard__new-note .dashboard__nav .dashboard__settings-container .dashboard__settings {
@@ -265,6 +266,7 @@
 
 .dashboard .dashboard__settings-panel .dashboard__dark-mode .dashboard__checkbox {
   margin-left: 1rem;
+  cursor: pointer;
 }
 
 .dashboard .dashboard__settings-panel .dashboard__language {
@@ -281,6 +283,7 @@
 
 .dashboard .dashboard__settings-panel .dashboard__language .dashboard__language-select {
   margin-left: 1rem;
+  cursor: pointer;
 }
 
 .dashboard .dashboard__settings-panel .dashboard__close-settings {

@@ -118,6 +118,7 @@
                     background-color: transparent;
                     color: $background;
                     border: none;
+                    cursor: pointer;
                 }
 
                 .dashboard__settings {
@@ -202,6 +203,7 @@
 
             .dashboard__checkbox {
                 margin-left: 1rem;
+                cursor: pointer;
             }
         }
 
@@ -213,6 +215,7 @@
 
             .dashboard__language-select {
                 margin-left: 1rem;
+                cursor: pointer;
             }
         }
 

@@ -256,11 +256,13 @@ darkmodeCheckbox.addEventListener('click', () => {
         document.body.style.backgroundColor = '#2a2a2a';
         dashboardParagraphList.forEach(dashboardParagraph => {
         dashboardParagraph.style.color = '#fafafa';
+        newNoteBtn.style.borderColor = '#2a2a2a';
         });
     } else {
         document.body.style.backgroundColor = '#fafafa';
         dashboardParagraphList.forEach(dashboardParagraph => {
             dashboardParagraph.style.color = '#2a2a2a';
+            newNoteBtn.style.borderColor = '#fafafa';
         });
     };
 });
