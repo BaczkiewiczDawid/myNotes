@@ -204,3 +204,42 @@ closeSettings.addEventListener('click', () => {
     settingsPanel.style.display = 'none';
     dashboardNewNote.style.display = 'flex';
 });
+
+const selectedLanguage = document.querySelector('.dashboard .dashboard__settings-panel .dashboard__language .dashboard__language-select');
+const settingsTitle = document.querySelector('.dashboard .dashboard__settings-panel .dashboard__settings-title');
+const darkModeTitle = document.querySelector('.dashboard .dashboard__settings-panel .dashboard__dark-mode .dashboard__header');
+const languageTitle = document.querySelector('.dashboard .dashboard__settings-panel .dashboard__language .dashboard__header');
+const selectEnglish = document.querySelector('.dashboard .dashboard__settings-panel .dashboard__language #english');
+const selectPolish = document.querySelector('.dashboard .dashboard__settings-panel .dashboard__language #polish');
+const addNewNoteTitle = document.querySelector('.dashboard .dashboard__new-note .dashboard__title');
+const descriptionInputPlaceholder = document.getElementsByName('Description')
+const titleInputPlaceholder = document.getElementsByName('Title');
+
+selectedLanguage.addEventListener('change', (e) => {
+    if (e.target.value == 'english') {
+        console.log('Selected language ' + e.target.value);
+        settingsTitle.textContent = 'Settings';
+        darkModeTitle.textContent = 'Dark mode';
+        languageTitle.textContent = 'Language';
+        selectEnglish.textContent = 'English';
+        selectPolish.textContent = 'Polish';
+        closeSettings.textContent = 'Close';
+        addNewNoteTitle.textContent = 'Add new note';
+        titleInputPlaceholder[0].placeholder = 'Title';
+        descriptionInputPlaceholder[0].placeholder = 'Description';
+        addNoteBtn.textContent = 'Add note';
+    }
+
+    if (e.target.value == 'polish') {
+        console.log('Selected language ' + e.target.value);
+        settingsTitle.textContent = 'Ustawienia';
+        darkModeTitle.textContent = 'Tryb ciemny';
+        languageTitle.textContent = 'Język';
+        selectEnglish.textContent = 'Angielski';
+        selectPolish.textContent = 'Polski';
+        closeSettings.textContent = 'Zamknij';
+        addNewNoteTitle.textContent = 'Dodaj nową notatke';
+        descriptionInputPlaceholder[0].placeholder = 'Treść notatki';
+        addNoteBtn.textContent = 'Dodaj notatke';
+    }
+})

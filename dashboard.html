@@ -72,9 +72,9 @@
             </div>
             <h1 class="dashboard__title">Add new note</h1>
             <label for="adding-new-note" class="dashboard__label">
-                <input type="text" placeholder="Title" class="dashboard__input" required="true" id="title" autocomplete="off"><br>
-                <textarea type="text" placeholder="Description" class="dashboard__input" required="true" id="description" maxlength="120" autocomplete="off"></textarea><br>
-                <input type="text" placeholder="Link" class="dashboard__input" required="false" id="link" autocomplete="off"><br>
+                <input type="text" name="Title" placeholder="Title" class="dashboard__input" required="true" id="title" autocomplete="off"><br>
+                <textarea type="text" name="Description" placeholder="Description" class="dashboard__input" required="true" id="description" maxlength="120" autocomplete="off"></textarea><br>
+                <input type="text" name="Link" placeholder="Link" class="dashboard__input" required="false" id="link" autocomplete="off"><br>
                 <button type="button" class="dashboard__button">Add note</button>
             </label>
         </div>
@@ -87,8 +87,8 @@
             <div class="dashboard__language">
                 <span class="dashboard__header">Language</span>
                 <select name="language" class="dashboard__language-select">
-                    <option value="english">English</option>
-                    <option value="polish">Polish</option>
+                    <option value="english" id="english">English</option>
+                    <option value="polish" id="polish">Polish</option>
                 </select>
             </div>
             <button class="dashboard__close-settings">Close</button>
