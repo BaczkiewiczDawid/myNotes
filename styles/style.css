@@ -543,5 +543,6 @@
 body, html {
   background-color: #fafafa;
   font-family: 'Roboto', sans-serif;
+  min-height: 100vh;
 }
 /*# sourceMappingURL=style.css.map */
