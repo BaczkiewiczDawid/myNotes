@@ -59,6 +59,11 @@ if (registerEmail) {
 
 let userList = [
     {
+        username: "test",
+        email: "test@gmail.com",
+        password: "zaq1@WSX"
+    },
+    {
         username: "dawid",
         email: "baczkiewicz.dawid22@gmail.com",
         password: "zaq1@WSX"
