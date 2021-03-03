@@ -99,7 +99,25 @@ logoutBtn.addEventListener('click', () => {
     location.href = 'index.html';
 });
 
+function darkMode() {
+    dashboardParagraphList = document.querySelectorAll('.dashboard .dashboard__notes .dashboard__content .dashboard__paragraph');
+    if (darkmodeCheckbox.checked) {
+        document.body.style.backgroundColor = '#2a2a2a';
+        dashboardParagraphList.forEach(dashboardParagraph => {
+        dashboardParagraph.style.color = '#fafafa';
+        newNoteBtn.style.borderColor = '#2a2a2a';
+        });
+    } else {
+        document.body.style.backgroundColor = '#fafafa';
+        dashboardParagraphList.forEach(dashboardParagraph => {
+            dashboardParagraph.style.color = '#2a2a2a';
+            newNoteBtn.style.borderColor = '#fafafa';
+        });
+    };
+}
+
 //DASHBOARD
+
 
 const newNoteBtn = document.querySelector('.dashboard .dashboard__new');
 const addingNote = document.querySelector('.dashboard .dashboard__new-note');
@@ -110,7 +128,7 @@ const linkInput = document.querySelector('.dashboard .dashboard__new-note .dashb
 const addNoteBtn = document.querySelector('.dashboard .dashboard__new-note .dashboard__label .dashboard__button');
 let deleteBtn = document.querySelectorAll('.dashboard .dashboard__notes .dashboard__note .dashboard__title-box .dashboard__delete');
 const dashboardNewNote = document.querySelector('.dashboard .dashboard__new-note');
-const dashboardParagraphList = document.querySelectorAll('.dashboard .dashboard__notes .dashboard__content .dashboard__paragraph');
+let dashboardParagraphList = document.querySelectorAll('.dashboard .dashboard__notes .dashboard__content .dashboard__paragraph');
 
 let isNewNoteOpened = false;
 
@@ -174,6 +192,8 @@ addNoteBtn.addEventListener('click', () => {
 
         deleteBtn = document.querySelectorAll('.dashboard .dashboard__notes .dashboard__note .dashboard__title-box .dashboard__delete');
     }
+
+    darkMode();
 })
 
 window.addEventListener('resize', () => {
@@ -257,17 +277,5 @@ selectedLanguage.addEventListener('change', (e) => {
 const darkmodeCheckbox = document.querySelector('.dashboard .dashboard__settings-panel .dashboard__dark-mode .dashboard__checkbox');
 
 darkmodeCheckbox.addEventListener('click', () => {
-    if (darkmodeCheckbox.checked) {
-        document.body.style.backgroundColor = '#2a2a2a';
-        dashboardParagraphList.forEach(dashboardParagraph => {
-        dashboardParagraph.style.color = '#fafafa';
-        newNoteBtn.style.borderColor = '#2a2a2a';
-        });
-    } else {
-        document.body.style.backgroundColor = '#fafafa';
-        dashboardParagraphList.forEach(dashboardParagraph => {
-            dashboardParagraph.style.color = '#2a2a2a';
-            newNoteBtn.style.borderColor = '#fafafa';
-        });
-    };
+    darkMode();
 });
