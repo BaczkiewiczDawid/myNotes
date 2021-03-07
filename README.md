@@ -1,6 +1,6 @@
 # myNotes
 
-An application that allows you to create notes, translated into 2 languages, supporting the dark mode
+An application that allows you to create notes, translated into 2 languages, supporting the dark mode.
 
 # Live
 
