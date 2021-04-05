@@ -43,6 +43,7 @@
                 width: 90%;
                 height: auto;
                 padding: 1rem 1.3rem;
+                word-wrap: break-word;
 
                 .dashboard__paragraph {
                     color: $primary-color;
@@ -240,7 +241,7 @@
     .dashboard {
         .dashboard__notes {
             .dashboard__note {
-                width: 45%;
+                width: 45vw;
             }
         }
     }

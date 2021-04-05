@@ -69,6 +69,7 @@
   width: 90%;
   height: auto;
   padding: 1rem 1.3rem;
+  word-wrap: break-word;
 }
 
 .dashboard .dashboard__notes .dashboard__note .dashboard__content .dashboard__paragraph {
@@ -304,7 +305,7 @@
 
 @media (min-width: 645px) {
   .dashboard .dashboard__notes .dashboard__note {
-    width: 45%;
+    width: 45vw;
   }
 }
 

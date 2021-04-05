@@ -12,6 +12,17 @@ const loginError = document.querySelector('.main .main__form #login-error');
 
 const emailReg = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 const passwordReg = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/;
+
+function saveNotes() {
+    let notesList = document.querySelector('.dashboard .dashboard__notes').innerHTML;
+    localStorage.setItem('notes', notesList);
+}
+
+function retrieve() {
+    document.querySelector('.dashboard .dashboard__notes').innerHTML = localStorage.getItem('notes')
+}
+
+retrieve();
 class User {
     constructor(name, email, password) {
         this.name = name;
@@ -87,8 +98,9 @@ if (loginBtn) {
                 location.href = 'dashboard.html';
                 loginError.style.display = 'none';
             }
-
-            loginError.style.display = 'flex';
+            if (i = userList.length) {
+                loginError.style.display = 'flex';
+            }
         }
     })
 }
@@ -191,6 +203,8 @@ addNoteBtn.addEventListener('click', () => {
         }
 
         deleteBtn = document.querySelectorAll('.dashboard .dashboard__notes .dashboard__note .dashboard__title-box .dashboard__delete');
+
+        saveNotes();
     }
 
     darkMode();
@@ -217,6 +231,7 @@ setInterval(() => {
     deleteBtn.forEach(del => {
         del.addEventListener('click', (e) => {
             e.target.parentNode.parentNode.remove();
+            saveNotes();
         })
     })
 }, 1000);
