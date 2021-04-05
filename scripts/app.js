@@ -22,7 +22,9 @@ function retrieve() {
     document.querySelector('.dashboard .dashboard__notes').innerHTML = localStorage.getItem('notes')
 }
 
-retrieve();
+if (window.location.href === '/dashboard') {
+    retrieve();
+}
 class User {
     constructor(name, email, password) {
         this.name = name;
@@ -73,21 +75,6 @@ let userList = [
         username: "test",
         email: "test@gmail.com",
         password: "zaq1@WSX"
-    },
-    {
-        username: "dawid",
-        email: "baczkiewicz.dawid22@gmail.com",
-        password: "zaq1@WSX"
-    },
-    {
-        username: "karol",
-        email: "karol22@gmail.com",
-        password: "Q1!wertyuiop"
-    },
-    {
-        username: "jacek",
-        email: "jacek.kam@gmail.com",
-        password: "zaq1@WSX"
     }
 ];
 
@@ -97,8 +84,7 @@ if (loginBtn) {
             if (loginEmail.value == userList[i].email && loginPassword.value == userList[i].password) {
                 location.href = 'dashboard.html';
                 loginError.style.display = 'none';
-            }
-            if (i = userList.length) {
+            } else {
                 loginError.style.display = 'flex';
             }
         }
