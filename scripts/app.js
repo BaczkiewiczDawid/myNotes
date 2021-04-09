@@ -41,11 +41,11 @@ class User {
     }
 }
 
-if (userList.length == 0) {
+if (userList.length = 0) {
     userList.push({
-        name: registerName.value,
-        email: registerEmail.value,
-        password: registerPassword.value
+        name: 'Test',
+        email: 'test@test.com',
+        password: 'Test1234'
     })
 } else {
     userList = JSON.parse(localStorage.getItem('userList'));
