@@ -20,19 +20,14 @@ function saveNotes() {
 }
 
 function retrieveNotes() {
-    document.querySelector('.dashboard .dashboard__notes').innerHTML = localStorage.getItem('notes')
+    document.querySelector('.dashboard .dashboard__notes').innerHTML = localStorage.getItem('notes');
 }
 
-if (window.location.href === '/dashboard') {
+if (!loginBtn && !registerBtn) {
     retrieveNotes();
 }
-let userList = [
-    {
-        name: "Test",
-        email: "test@test.com",
-        password: "Test1234"
-    }
-];
+
+let userList = [];
 class User {
     constructor(name, email, password) {
         this.name = name;
@@ -41,14 +36,16 @@ class User {
     }
 }
 
-if (userList.length = 0) {
-    userList.push({
-        name: 'Test',
-        email: 'test@test.com',
-        password: 'Test1234'
-    })
-} else {
-    userList = JSON.parse(localStorage.getItem('userList'));
+userList = JSON.parse(localStorage.getItem('userList'));
+
+if (userList === null) {
+    userList = [
+        {
+            name: 'Test',
+            email: 'test@test.com',
+            password: 'Test1234'
+        }
+    ]
 }
 
 if (registerEmail) {
