@@ -13,24 +13,42 @@ const loginError = document.querySelector('.main .main__form #login-error');
 const emailReg = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 const passwordReg = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/;
 
+
 function saveNotes() {
     let notesList = document.querySelector('.dashboard .dashboard__notes').innerHTML;
     localStorage.setItem('notes', notesList);
 }
 
-function retrieve() {
+function retrieveNotes() {
     document.querySelector('.dashboard .dashboard__notes').innerHTML = localStorage.getItem('notes')
 }
 
 if (window.location.href === '/dashboard') {
-    retrieve();
+    retrieveNotes();
 }
+let userList = [
+    {
+        name: "Test",
+        email: "test@test.com",
+        password: "Test1234"
+    }
+];
 class User {
     constructor(name, email, password) {
         this.name = name;
         this.email = email;
         this.password = password;
     }
+}
+
+if (userList.length == 0) {
+    userList.push({
+        name: registerName.value,
+        email: registerEmail.value,
+        password: registerPassword.value
+    })
+} else {
+    userList = JSON.parse(localStorage.getItem('userList'));
 }
 
 if (registerEmail) {
@@ -65,22 +83,23 @@ if (registerEmail) {
     });
 
     registerBtn.addEventListener('click', () => {
-        userList.push(new User(registerName.value, registerEmail.value, registerPassword.value));
-        console.log(userList)
+        userList.push({
+            name: registerName.value,
+            email: registerEmail.value,
+            password: registerPassword.value
+        })
+        alert('User created succesfully');
+        localStorage.setItem('userList', JSON.stringify(userList));
+        registerEmail.value = '';
+        registerName.value = '';
+        registerPassword.value = '';
     })
 }
 
-let userList = [
-    {
-        username: "test",
-        email: "test@gmail.com",
-        password: "zaq1@WSX"
-    }
-];
-
 if (loginBtn) {
+    console.log(userList)
     loginBtn.addEventListener('click', () => {
-        for (let i = 0; i < userList.length; i++) {
+        for (let i = 0; i <= userList.length; i++) {
             if (loginEmail.value == userList[i].email && loginPassword.value == userList[i].password) {
                 location.href = 'dashboard.html';
                 loginError.style.display = 'none';
