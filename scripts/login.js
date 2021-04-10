@@ -9,7 +9,17 @@ const registerNavUndertext = document.querySelector('.main .main__create .main__
 
 let userList = []
 
-userList = JSON.parse(localStorage.getItem('userList'));
+if (localStorage.getItem('userList') === null) {
+    userList = [
+        {
+            email: 'test@test.com',
+            name: 'Test',
+            password: 'Test1234'
+        }
+    ];
+} else {
+    settingsArray = JSON.parse(localStorage.getItem('userList'));
+}
 
 loginBtn.addEventListener('click', () => {
     for (let i = 0; i <= userList.length; i++) {

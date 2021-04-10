@@ -1,5 +1,6 @@
 const logoutBtn = document.querySelector('.dashboard .dashboard__new-note .dashboard__settings-container .dashboard__logout');
 const darkmodeCheckbox = document.querySelector('.dashboard .dashboard__settings-panel .dashboard__dark-mode .dashboard__checkbox');
+
 let settingsArray = [
     {
         selectedLanguage: 'english',
@@ -7,7 +8,16 @@ let settingsArray = [
     }
 ]
 
-settingsArray = JSON.parse(localStorage.getItem('settingsArray'));
+if (localStorage.getItem('settingsArray') === null) {
+    settingsArray = [
+        {
+            selectedLanguage: 'english',
+            darkMode: false
+        }
+    ];
+} else {
+    settingsArray = JSON.parse(localStorage.getItem('settingsArray'));
+}
 
 function saveNotes() {
     let notesList = document.querySelector('.dashboard .dashboard__notes').innerHTML;
@@ -163,6 +173,7 @@ const addNewNoteTitle = document.querySelector('.dashboard .dashboard__new-note 
 const descriptionInputPlaceholder = document.getElementsByName('Description')
 const titleInputPlaceholder = document.getElementsByName('Title');
 
+
 openSettings.addEventListener('click', () => {
     settingsPanel.style.display = 'flex';
     dashboardNewNote.style.display = 'none';
@@ -201,25 +212,25 @@ function setPolishLanguage() {
 
 selectedLanguage.addEventListener('change', (e) => {
     if (e.target.value == 'english') {
+        setEnglishLanguage();
         settingsArray[0].selectedLanguage = 'english';
         localStorage.setItem('settingsArray', JSON.stringify(settingsArray));
-        setEnglishLanguage();
     } else {
+        setPolishLanguage();
         settingsArray[0].selectedLanguage = 'polish';
         localStorage.setItem('settingsArray', JSON.stringify(settingsArray));
-        setPolishLanguage();
     }
 })
 
 darkmodeCheckbox.addEventListener('click', () => {
     if (darkmodeCheckbox.checked == true) {
+        darkMode();
         settingsArray[0].darkMode = true;
         localStorage.setItem('settingsArray', JSON.stringify(settingsArray));
-        darkMode();
     } else {
+        darkMode();
         settingsArray[0].darkMode = false;
         localStorage.setItem('settingsArray', JSON.stringify(settingsArray));
-        darkMode();
     }
 });
 
