@@ -1,18 +1,13 @@
-const registerEmail = document.querySelector('.main .main__form #register-email');
-const registerName = document.querySelector('.main .main__form #register-name');
-const registerPassword = document.querySelector('.main .main__form #register-password');
-const registerBtn = document.querySelector('.main .main__form #register-button');
-const emailError = document.querySelector('.main .main__form .main__error-email');
-const nameError = document.querySelector('.main .main__form .main__error-name');
-const passwordError = document.querySelector('.main .main__form .main__error-password');
-const loginBtn = document.querySelector('.main .main__form .login-btn');
-const loginEmail = document.querySelector('.main .main__form #login-email');
-const loginPassword = document.querySelector('.main .main__form #login-password')
-const loginError = document.querySelector('.main .main__form #login-error');
+const logoutBtn = document.querySelector('.dashboard .dashboard__new-note .dashboard__settings-container .dashboard__logout');
+const darkmodeCheckbox = document.querySelector('.dashboard .dashboard__settings-panel .dashboard__dark-mode .dashboard__checkbox');
+let settingsArray = [
+    {
+        selectedLanguage: 'english',
+        darkMode: false
+    }
+]
 
-const emailReg = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-const passwordReg = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/;
-
+settingsArray = JSON.parse(localStorage.getItem('settingsArray'));
 
 function saveNotes() {
     let notesList = document.querySelector('.dashboard .dashboard__notes').innerHTML;
@@ -23,110 +18,26 @@ function retrieveNotes() {
     document.querySelector('.dashboard .dashboard__notes').innerHTML = localStorage.getItem('notes');
 }
 
-if (!loginBtn && !registerBtn) {
-    retrieveNotes();
-}
-
-let userList = [];
-class User {
-    constructor(name, email, password) {
-        this.name = name;
-        this.email = email;
-        this.password = password;
-    }
-}
-
-userList = JSON.parse(localStorage.getItem('userList'));
-
-if (userList === null) {
-    userList = [
-        {
-            name: 'Test',
-            email: 'test@test.com',
-            password: 'Test1234'
-        }
-    ]
-}
-
-if (registerEmail) {
-    registerEmail.addEventListener('input', () => {
-        if (emailReg.test(String(registerEmail.value).toLowerCase()) == true) {
-            emailError.style.display = 'none';
-            registerBtn.disabled = false;
-        } else {
-            emailError.style.display = 'flex';
-            registerBtn.disabled = true;
-        }
-    });
-    
-    registerName.addEventListener('input', () => {
-        if (registerName.value == '' || registerName.value.length < 6) {
-            nameError.style.display = 'flex';
-            registerBtn.disabled = false;
-        } else {
-            nameError.style.display = 'none'
-            registerBtn.disabled = true;
-        }
-    })
-    
-    registerPassword.addEventListener('input', () => {
-        if(passwordReg.test(String(registerPassword.value)) == true) {
-            passwordError.style.display = 'none';
-            registerBtn.disabled = false;
-        } else {
-            passwordError.style.display = 'flex';
-            registerBtn.disabled = true;
-        }
-    });
-
-    registerBtn.addEventListener('click', () => {
-        userList.push({
-            name: registerName.value,
-            email: registerEmail.value,
-            password: registerPassword.value
-        })
-        alert('User created succesfully');
-        localStorage.setItem('userList', JSON.stringify(userList));
-        registerEmail.value = '';
-        registerName.value = '';
-        registerPassword.value = '';
-    })
-}
-
-if (loginBtn) {
-    console.log(userList)
-    loginBtn.addEventListener('click', () => {
-        for (let i = 0; i <= userList.length; i++) {
-            if (loginEmail.value == userList[i].email && loginPassword.value == userList[i].password) {
-                location.href = 'dashboard.html';
-                loginError.style.display = 'none';
-            } else {
-                loginError.style.display = 'flex';
-            }
-        }
-    })
-}
-
-const logoutBtn = document.querySelector('.dashboard .dashboard__new-note .dashboard__settings-container .dashboard__logout');
-
 logoutBtn.addEventListener('click', () => {
     location.href = 'index.html';
 });
 
 function darkMode() {
     dashboardParagraphList = document.querySelectorAll('.dashboard .dashboard__notes .dashboard__content .dashboard__paragraph');
-    if (darkmodeCheckbox.checked) {
+    if (settingsArray[0].darkMode == true) {
         document.body.style.backgroundColor = '#2a2a2a';
         dashboardParagraphList.forEach(dashboardParagraph => {
         dashboardParagraph.style.color = '#fafafa';
         newNoteBtn.style.borderColor = '#2a2a2a';
+        darkmodeCheckbox.checked = true;
         });
     } else {
         document.body.style.backgroundColor = '#fafafa';
         dashboardParagraphList.forEach(dashboardParagraph => {
             dashboardParagraph.style.color = '#2a2a2a';
-            newNoteBtn.style.borderColor = '#fafafa';
         });
+        newNoteBtn.style.borderColor = '#fafafa';
+        darkmodeCheckbox.checked = false;
     };
 }
 
@@ -208,7 +119,6 @@ addNoteBtn.addEventListener('click', () => {
 
         saveNotes();
     }
-
     darkMode();
 })
 
@@ -243,6 +153,15 @@ setInterval(() => {
 const openSettings = document.querySelector('.dashboard .dashboard__new-note .dashboard__nav .dashboard__settings-container .dashboard__settings');
 const settingsPanel = document.querySelector('.dashboard .dashboard__settings-panel');
 const closeSettings = document.querySelector('.dashboard .dashboard__settings-panel .dashboard__close-settings');
+const selectedLanguage = document.querySelector('.dashboard .dashboard__settings-panel .dashboard__language .dashboard__language-select');
+const settingsTitle = document.querySelector('.dashboard .dashboard__settings-panel .dashboard__settings-title');
+const darkModeTitle = document.querySelector('.dashboard .dashboard__settings-panel .dashboard__dark-mode .dashboard__header');
+const languageTitle = document.querySelector('.dashboard .dashboard__settings-panel .dashboard__language .dashboard__header');
+const selectEnglish = document.querySelector('.dashboard .dashboard__settings-panel .dashboard__language #english');
+const selectPolish = document.querySelector('.dashboard .dashboard__settings-panel .dashboard__language #polish');
+const addNewNoteTitle = document.querySelector('.dashboard .dashboard__new-note .dashboard__title');
+const descriptionInputPlaceholder = document.getElementsByName('Description')
+const titleInputPlaceholder = document.getElementsByName('Title');
 
 openSettings.addEventListener('click', () => {
     settingsPanel.style.display = 'flex';
@@ -254,45 +173,63 @@ closeSettings.addEventListener('click', () => {
     dashboardNewNote.style.display = 'flex';
 });
 
-const selectedLanguage = document.querySelector('.dashboard .dashboard__settings-panel .dashboard__language .dashboard__language-select');
-const settingsTitle = document.querySelector('.dashboard .dashboard__settings-panel .dashboard__settings-title');
-const darkModeTitle = document.querySelector('.dashboard .dashboard__settings-panel .dashboard__dark-mode .dashboard__header');
-const languageTitle = document.querySelector('.dashboard .dashboard__settings-panel .dashboard__language .dashboard__header');
-const selectEnglish = document.querySelector('.dashboard .dashboard__settings-panel .dashboard__language #english');
-const selectPolish = document.querySelector('.dashboard .dashboard__settings-panel .dashboard__language #polish');
-const addNewNoteTitle = document.querySelector('.dashboard .dashboard__new-note .dashboard__title');
-const descriptionInputPlaceholder = document.getElementsByName('Description')
-const titleInputPlaceholder = document.getElementsByName('Title');
+function setEnglishLanguage() {
+    settingsTitle.textContent = 'Settings';
+    darkModeTitle.textContent = 'Dark mode';
+    languageTitle.textContent = 'Language';
+    selectEnglish.textContent = 'English';
+    selectPolish.textContent = 'Polish';
+    closeSettings.textContent = 'Close';
+    addNewNoteTitle.textContent = 'Add new note';
+    titleInputPlaceholder[0].placeholder = 'Title';
+    descriptionInputPlaceholder[0].placeholder = 'Description';
+    addNoteBtn.textContent = 'Add note';
+}
+
+function setPolishLanguage() {
+    settingsTitle.textContent = 'Ustawienia';
+    darkModeTitle.textContent = 'Tryb ciemny';
+    languageTitle.textContent = 'Język';
+    selectEnglish.textContent = 'Angielski';
+    selectPolish.textContent = 'Polski';
+    closeSettings.textContent = 'Zamknij';
+    addNewNoteTitle.textContent = 'Dodaj nową notatke';
+    titleInputPlaceholder[0].placeholder = 'Tytuł';
+    descriptionInputPlaceholder[0].placeholder = 'Treść notatki';
+    addNoteBtn.textContent = 'Dodaj notatke';
+}
 
 selectedLanguage.addEventListener('change', (e) => {
     if (e.target.value == 'english') {
-        settingsTitle.textContent = 'Settings';
-        darkModeTitle.textContent = 'Dark mode';
-        languageTitle.textContent = 'Language';
-        selectEnglish.textContent = 'English';
-        selectPolish.textContent = 'Polish';
-        closeSettings.textContent = 'Close';
-        addNewNoteTitle.textContent = 'Add new note';
-        titleInputPlaceholder[0].placeholder = 'Title';
-        descriptionInputPlaceholder[0].placeholder = 'Description';
-        addNoteBtn.textContent = 'Add note';
-    }
-
-    if (e.target.value == 'polish') {
-        settingsTitle.textContent = 'Ustawienia';
-        darkModeTitle.textContent = 'Tryb ciemny';
-        languageTitle.textContent = 'Język';
-        selectEnglish.textContent = 'Angielski';
-        selectPolish.textContent = 'Polski';
-        closeSettings.textContent = 'Zamknij';
-        addNewNoteTitle.textContent = 'Dodaj nową notatke';
-        descriptionInputPlaceholder[0].placeholder = 'Treść notatki';
-        addNoteBtn.textContent = 'Dodaj notatke';
+        settingsArray[0].selectedLanguage = 'english';
+        localStorage.setItem('settingsArray', JSON.stringify(settingsArray));
+        setEnglishLanguage();
+    } else {
+        settingsArray[0].selectedLanguage = 'polish';
+        localStorage.setItem('settingsArray', JSON.stringify(settingsArray));
+        setPolishLanguage();
     }
 })
 
-const darkmodeCheckbox = document.querySelector('.dashboard .dashboard__settings-panel .dashboard__dark-mode .dashboard__checkbox');
-
 darkmodeCheckbox.addEventListener('click', () => {
-    darkMode();
+    if (darkmodeCheckbox.checked == true) {
+        settingsArray[0].darkMode = true;
+        localStorage.setItem('settingsArray', JSON.stringify(settingsArray));
+        darkMode();
+    } else {
+        settingsArray[0].darkMode = false;
+        localStorage.setItem('settingsArray', JSON.stringify(settingsArray));
+        darkMode();
+    }
 });
+
+if (settingsArray[0].selectedLanguage == 'english') {
+    setEnglishLanguage();
+    selectedLanguage.value = 'english';
+} else {
+    setPolishLanguage();
+    selectedLanguage.value = 'polish';
+}
+
+retrieveNotes();
+darkMode();
