@@ -19,6 +19,8 @@ if (localStorage.getItem('settingsArray') === null) {
     settingsArray = JSON.parse(localStorage.getItem('settingsArray'));
 }
 
+let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
 function saveNotes() {
     let notesList = document.querySelector('.dashboard .dashboard__notes').innerHTML;
     localStorage.setItem('notes', notesList);
@@ -241,6 +243,10 @@ if (settingsArray[0].selectedLanguage == 'english') {
     setPolishLanguage();
     selectedLanguage.value = 'polish';
 }
+
+const loggedUser = document.querySelector('.dashboard .dashboard__new-note .dashboard__nav .dashboard__welcome .dashboard__username');
+
+loggedUser.textContent = `, ${currentUser}`
 
 retrieveNotes();
 darkMode();

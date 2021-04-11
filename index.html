@@ -12,8 +12,8 @@
     <main class="main">
         <h1 class="main__title">Login to My<span class="main__title-logo">Notes</span></h1>
         <form action="/register" method="POST" class="main__form">
-            <input type="text" name="email" placeholder="Email" class="main__input input" id="login-email" required>
-            <input type="password" name="password" placeholder="Password" class="main__input input" id="login-password" required>
+            <input type="text" name="email" placeholder="Email" class="main__input input" id="login-email" autocomplete="off" required>
+            <input type="password" name="password" placeholder="Password" class="main__input input" id="login-password" autocomplete="off" required>
             <p class="main__error" id="login-error">E-Mail or Password are incorrect</p>
             <button type="button" name="login" placeholder="Login" class="main__submit login-btn btn">Login</button>
         </form>

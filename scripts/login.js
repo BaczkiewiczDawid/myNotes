@@ -8,6 +8,7 @@ const registerNav = document.querySelector('.main .main__create .main__register'
 const registerNavUndertext = document.querySelector('.main .main__create .main__register-create');
 
 let userList = []
+let currentUser = '';
 
 if (localStorage.getItem('userList') === null) {
     userList = [
@@ -42,6 +43,8 @@ loginBtn.addEventListener('click', () => {
             if (loginEmail.value == userList[i].email && loginPassword.value == userList[i].password) {
                 location.href = 'dashboard.html';
                 loginError.style.display = 'none';
+                currentUser = userList[i].name;
+                localStorage.setItem('currentUser', JSON.stringify(currentUser));
             } else {
                 loginError.style.display = 'flex';
             }

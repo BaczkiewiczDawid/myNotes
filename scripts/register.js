@@ -93,6 +93,7 @@ function darkMode() {
     logo.style.color = '#fafafa';
     placeholders.forEach((e) => {
         e.style.borderColor = '#fafafa';
+        e.style.color = '#fafafa';
     });
     loginNav.style.color = '#fafafa';
 }
@@ -102,6 +103,7 @@ function lightMode() {
     logo.style.color = '#2a2a2a';
     placeholders.forEach((e) => {
         e.style.borderColor = '#2a2a2a';
+        e.style.color = '#2a2a2a'
     });
     loginNav.style.color = '#2a2a2a';
 }
@@ -114,7 +116,7 @@ if (settingsArray[0].darkMode == true) {
 }
 
 function setEnglishLanguage() {
-    logo.textContent = 'Login to My';
+    logo.textContent = 'Register to My';
     placeholders[1].placeholder = 'Name';
     placeholders[2].placeholder = 'Password';
     registerBtn.textContent = 'Register';
@@ -123,7 +125,7 @@ function setEnglishLanguage() {
 }
 
 function setPolishLanguage() {
-    logo.textContent = 'Zaloguj się do My';
+    logo.textContent = 'Zarejestruj się do My';
     placeholders[1].placeholder = 'Imie';
     placeholders[2].placeholder = 'Hasło';
     registerBtn.textContent = 'Zarejestruj się';
