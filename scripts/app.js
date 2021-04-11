@@ -221,18 +221,18 @@ selectedLanguage.addEventListener('change', (e) => {
         localStorage.setItem('settingsArray', JSON.stringify(settingsArray));
     }
 })
-
-darkmodeCheckbox.addEventListener('click', () => {
+*darkmodeCheckbox.addEventListener('click', () => {
     if (darkmodeCheckbox.checked == true) {
-        darkMode();
         settingsArray[0].darkMode = true;
         localStorage.setItem('settingsArray', JSON.stringify(settingsArray));
-    } else {
         darkMode();
+    } else {
         settingsArray[0].darkMode = false;
         localStorage.setItem('settingsArray', JSON.stringify(settingsArray));
+        darkMode();
     }
 });
+
 
 if (settingsArray[0].selectedLanguage == 'english') {
     setEnglishLanguage();

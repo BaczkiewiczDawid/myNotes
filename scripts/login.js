@@ -18,7 +18,20 @@ if (localStorage.getItem('userList') === null) {
         }
     ];
 } else {
-    settingsArray = JSON.parse(localStorage.getItem('userList'));
+    userList = JSON.parse(localStorage.getItem('userList'));
+}
+
+let settingsArray = []
+
+if (localStorage.getItem('settingsArray') === null) {
+    settingsArray = [
+        {
+            selectedLanguage: 'english',
+            darkMode: false
+        }
+    ]
+} else {
+    settingsArray = JSON.parse(localStorage.getItem('settingsArray'));
 }
 
 loginBtn.addEventListener('click', () => {
@@ -35,15 +48,6 @@ loginBtn.addEventListener('click', () => {
         }
     }
 })
-
-let settingsArray = [
-    {
-        selectedLanguage: 'english',
-        darkMode: false
-    }
-]
-
-settingsArray = JSON.parse(localStorage.getItem('settingsArray'));
 
 function darkMode() {
     document.body.style.backgroundColor = '#2a2a2a';
@@ -94,7 +98,6 @@ if (settingsArray[0].selectedLanguage == 'english') {
 } else {
     setPolishLanguage();
 }
-
 
 const logoSpan = document.createElement('span');
 logoSpan.classList.add('main__title-logo');
