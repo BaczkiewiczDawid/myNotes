@@ -152,6 +152,7 @@ window.addEventListener('resize', () => {
 })
 
 setInterval(() => {
+    deleteBtn = document.querySelectorAll('.dashboard .dashboard__notes .dashboard__note .dashboard__title-box .dashboard__delete');
     deleteBtn.forEach(del => {
         del.addEventListener('click', (e) => {
             e.target.parentNode.parentNode.remove();
