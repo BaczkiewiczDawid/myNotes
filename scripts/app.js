@@ -1,5 +1,6 @@
 const logoutBtn = document.querySelector('.dashboard .dashboard__new-note .dashboard__settings-container .dashboard__logout');
 const darkmodeCheckbox = document.querySelector('.dashboard .dashboard__settings-panel .dashboard__dark-mode .dashboard__checkbox');
+let editStatus = false
 
 let settingsArray = [
     {
@@ -30,9 +31,35 @@ function retrieveNotes() {
     document.querySelector('.dashboard .dashboard__notes').innerHTML = localStorage.getItem('notes');
 }
 
+retrieveNotes();
+
 logoutBtn.addEventListener('click', () => {
     location.href = 'index.html';
 });
+
+function editNote() {
+    editBtn = document.querySelectorAll('.dashboard .dashboard__notes .dashboard__note .dashboard__title-box .dashboard__action .dashboard__edit');
+    editBtn.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            if (editStatus == false) {
+                const titleText = e.target.parentNode.parentNode.firstChild;
+                titleText.outerHTML = `<input value="${titleText.textContent}" maxlength="13" class="dashboard__edit-input">`
+                const paragraphText = e.target.parentNode.parentNode.parentNode.children[1].children[0];
+                paragraphText.outerHTML = `<textarea maxlength="90" class="dashboard__edit-input">${paragraphText.textContent}</textarea>`;
+                editStatus = true
+            } else {
+                const titleText = e.target.parentNode.parentNode.firstChild;
+                titleText.outerHTML = `<h1 class="dashboard__title">${titleText.value}</h1>`
+                const paragraphText = e.target.parentNode.parentNode.parentNode.children[1].children[0];
+                paragraphText.outerHTML = `<p class="dashboard__paragraph">${paragraphText.value}</p>`;
+                saveNotes();
+                editStatus = false;
+            }
+        })
+    })
+}
+
+editNote();
 
 function darkMode() {
     dashboardParagraphList = document.querySelectorAll('.dashboard .dashboard__notes .dashboard__content .dashboard__paragraph');
@@ -94,6 +121,8 @@ addNoteBtn.addEventListener('click', () => {
         const dashboardNote = document.createElement('div');
         const dashboardTitleBox = document.createElement('div');
         const dashboardTitle = document.createElement('h1');
+        const actionMenu = document.createElement('div');
+        const dashboardEdit = document.createElement('img');
         const dashboardDelete = document.createElement('img');
         const dashboardContent = document.createElement('div');
         const dashboardParagraph = document.createElement('p');
@@ -102,7 +131,9 @@ addNoteBtn.addEventListener('click', () => {
         dashboardNote.appendChild(dashboardTitleBox);
         dashboardNote.appendChild(dashboardContent);
         dashboardTitleBox.appendChild(dashboardTitle);
-        dashboardTitleBox.appendChild(dashboardDelete);
+        actionMenu.appendChild(dashboardEdit);
+        actionMenu.appendChild(dashboardDelete);
+        dashboardTitleBox.appendChild(actionMenu);
         dashboardContent.appendChild(dashboardParagraph);
 
         dashboardNote.classList.add('dashboard__note');
@@ -111,16 +142,20 @@ addNoteBtn.addEventListener('click', () => {
         dashboardDelete.classList.add('dashboard__delete');
         dashboardContent.classList.add('dashboard__content');
         dashboardParagraph.classList.add('dashboard__paragraph');
+        actionMenu.classList.add('dashboard__action');
+        dashboardEdit.classList.add('dashboard__edit');
 
         dashboardDelete.src = 'img/delete.png';
         dashboardTitle.textContent = titleInput.value;
         dashboardParagraph.textContent = descriptionInput.value;
+        dashboardEdit.src = 'img/edit.png';
 
         titleInput.value = '';
         descriptionInput.value = '';
 
         if (linkInput.value != '') {
             const dashboardLink = document.createElement('a');
+            dashboardLink.href = linkInput.value;
             linkInput.value = '';
             dashboardLink.textContent = 'Link';
             dashboardContent.appendChild(dashboardLink);
@@ -132,6 +167,7 @@ addNoteBtn.addEventListener('click', () => {
         saveNotes();
     }
     darkMode();
+    editNote();
 })
 
 window.addEventListener('resize', () => {
@@ -152,10 +188,10 @@ window.addEventListener('resize', () => {
 })
 
 setInterval(() => {
-    deleteBtn = document.querySelectorAll('.dashboard .dashboard__notes .dashboard__note .dashboard__title-box .dashboard__delete');
+    deleteBtn = document.querySelectorAll('.dashboard .dashboard__notes .dashboard__note .dashboard__title-box .dashboard__action .dashboard__delete');
     deleteBtn.forEach(del => {
         del.addEventListener('click', (e) => {
-            e.target.parentNode.parentNode.remove();
+            e.target.parentNode.parentNode.parentNode.remove();
             saveNotes();
         })
     })
@@ -249,5 +285,4 @@ const loggedUser = document.querySelector('.dashboard .dashboard__new-note .dash
 
 loggedUser.textContent = `, ${currentUser}`
 
-retrieveNotes();
 darkMode();

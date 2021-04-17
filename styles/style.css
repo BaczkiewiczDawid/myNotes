@@ -1,3 +1,8 @@
+.black {
+  color: #2a2a2a;
+  border: 1px solid #2a2a2a;
+}
+
 .dashboard {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -51,11 +56,28 @@
   font-weight: 700;
 }
 
-.dashboard .dashboard__notes .dashboard__note .dashboard__title-box .dashboard__delete {
+.dashboard .dashboard__notes .dashboard__note .dashboard__title-box .dashboard__action .dashboard__delete {
   color: #fafafa;
   cursor: pointer;
   width: 10px;
   height: auto;
+}
+
+.dashboard .dashboard__notes .dashboard__note .dashboard__title-box .dashboard__action .dashboard__edit {
+  color: #fafafa;
+  cursor: pointer;
+  width: 12px;
+  height: auto;
+  margin-right: 20px;
+}
+
+.dashboard .dashboard__notes .dashboard__note .dashboard__title-box .dashboard__edit-input {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #fafafa;
+  color: #fafafa;
+  font-size: 1.4rem;
+  width: 75%;
 }
 
 .dashboard .dashboard__notes .dashboard__note .dashboard__content {
@@ -86,6 +108,15 @@
   text-decoration: none;
   color: #2663FF;
   cursor: pointer;
+}
+
+.dashboard .dashboard__notes .dashboard__note .dashboard__content .dashboard__edit-input {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #2a2a2a;
+  color: #2a2a2a;
+  font-size: 1.2rem;
+  height: 6rem;
 }
 
 .dashboard .dashboard__new {
