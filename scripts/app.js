@@ -46,7 +46,12 @@ function editNote() {
                 titleText.outerHTML = `<input value="${titleText.textContent}" maxlength="13" class="dashboard__edit-input">`
                 const paragraphText = e.target.parentNode.parentNode.parentNode.children[1].children[0];
                 paragraphText.outerHTML = `<textarea maxlength="90" class="dashboard__edit-input">${paragraphText.textContent}</textarea>`;
-                editStatus = true
+                editStatus = true;
+
+                if (settingsArray[0].darkMode == true) {
+                    console.log('elo')
+                    e.target.parentNode.parentNode.parentNode.children[1].children[0].style.color = '#fafafa'
+                }
             } else {
                 const titleText = e.target.parentNode.parentNode.firstChild;
                 titleText.outerHTML = `<h1 class="dashboard__title">${titleText.value}</h1>`
@@ -54,6 +59,14 @@ function editNote() {
                 paragraphText.outerHTML = `<p class="dashboard__paragraph">${paragraphText.value}</p>`;
                 saveNotes();
                 editStatus = false;
+
+                if (settingsArray[0].darkMode == true) {
+                    console.log('elo')
+                    e.target.parentNode.parentNode.parentNode.children[1].children[0].style.color = '#fafafa'
+                    dashboardParagraphList.forEach(dashboardParagraph => {
+                        dashboardParagraph.style.color = '#fafafa'
+                    })
+                }
             }
         })
     })
